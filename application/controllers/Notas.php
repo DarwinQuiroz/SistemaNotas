@@ -19,4 +19,23 @@ class Notas extends CI_Controller
 		$this->load->view('notas/index', $data);
 		$this->load->view('templates/footer');
 	}
+
+	public function elegir()
+	{
+		$data['periodos'] = $this->Nivel_model->ObtenerPeriodo();
+		$data['titulo'] = "Elegir Materias";
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/nav');
+		$this->load->view('notas/elegir', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function Consulta()
+	{
+		$data['titulo'] = "Concentrado de Notas";
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/nav');
+		$this->load->view('notas/consulta', $data);
+		$this->load->view('templates/footer');
+	}
 }

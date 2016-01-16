@@ -6,6 +6,8 @@ class Nota_model extends CI_Model
 		parent::__construct();
 	}
 
+	public function ConcentradoNotas()
+	{}
 
 }
 ?>

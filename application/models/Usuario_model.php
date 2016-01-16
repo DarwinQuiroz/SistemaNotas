@@ -8,20 +8,14 @@ class Usuario_model extends CI_Model
 
 	public function IniciarSesion($usuario)
 	{
-		$consulta = $this->db->query("SELECT * FROM usuarios WHERE nombreusuario = '".$usuario."' LIMIT 1");
-		if($consulta ->num_rows() > 0)
-		{
-			return $consulta->row();
-		}
-		else
-		{
-			return false;
-		}
+		$consulta = $this->db->query("SELECT * FROM usuarios WHERE usuario = '".$usuario."' LIMIT 1");
+
+		if($consulta ->num_rows() > 0) return $consulta->row();
+		else return false;
 	}
 
 	public function RegistrarUsuario($datosUsuario)
 	{
-		// $this->db->insert('usuarios', array('nombreusuario' => $datos['mombreusuario'], 'clave'=> $datos['clave']));
 		$this->db->insert('usuarios', $datosUsuario);
 	}
 
@@ -49,7 +43,7 @@ class Usuario_model extends CI_Model
 		$this->db->update('usuarios', $datosUsuario);
 	}
 
-	public function Eliminarusuario($id)
+	public function EliminarUsuario($id)
 	{
 		$this->db->where('idusuario', $id);
 		$this->db->delete('usuarios');

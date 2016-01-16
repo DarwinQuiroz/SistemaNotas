@@ -6,6 +6,8 @@ class Usuario extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Usuario_model');
+		$this->load->library('form_validation');
+		// $this->VerificarSesion();
 	}
 
 	public function index()
@@ -22,6 +24,14 @@ class Usuario extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
+	// function VerificarSesion()
+	// {
+	// 	if(!$this->session->userdata('login'))
+	// 	{
+	// 		redirect(base_url());
+	// 	}
+	// }
+
 	public function login()
 	{
 		$nombreUsuario = $this->input->post('usuario');
@@ -37,45 +47,49 @@ class Usuario extends CI_Controller
 					'login' => true
 					);
 				$this->session->set_userdata($datosSesion);
-				redirect(base_url());
+				redirect(base_url()."usuario");
 			}
-			else
-			{
-				header("Location: " . base_url());
-			}
+			else header("Location: " . base_url());
 		}
-		else
-		{
-			header("Location: " . base_url());
-		}
-
+		else header("Location: " . base_url());
 	}
 
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		header("Location: " . base_url());
+		redirect(base_url());
+	}
+	private function Validar()
+	{
+		$this->form_validation->set_rules('nombre', 'Usuario', 'required|trim|is_unique[usuarios.nombres]');
+		$this->form_validation->set_rules('correo', 'Correo', 'required|trim|valid_email|is_unique[usuarios.correo]');
+		$this->form_validation->set_rules('usuario', 'Usuario', 'required|trim|is_unique[usuarios.usuario]');
+		$this->form_validation->set_rules('clave', 'Contraseña', 'required|trim|min_length[8]');
+		$this->form_validation->set_rules('claveConfirm', 'Confirme Contraseña', 'required|trim|min_length[8]|matches[clave]');
 	}
 
 	public function crear()
 	{
-		$data['titulo'] = "Nuevo";
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/nav');
-		$this->load->view('admin/usuarios/crear', $data);
-		$this->load->view('templates/footer') ;
-	}
-
-	public function guardar()
-	{
-		$nombre = $this->input->post('usuario');
-		$clave = $this->input->post('clave');
-		$datosUsuario = [
-			'nombreusuario' => $nombre,
-			'clave' => $clave
-		];
-		$this->Usuario_model->RegistrarUsuario($datosUsuario);
-		redirect(base_url()."usuario");
+		$this->Validar();
+		if ($this->form_validation->run() != FALSE)
+		{
+			$datosUsuario = [
+				'nombres' => $this->input->post('nombre'),
+				'correo' => $this->input->post('correo'),
+				'usuario' => $this->input->post('usuario'),
+				'clave' => $this->input->post('clave')
+			];
+			$this->Usuario_model->RegistrarUsuario($datosUsuario);
+			redirect(base_url()."usuario");
+		}
+		else
+		{
+			$data['titulo'] = "Registrar Usuario";
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/nav');
+			$this->load->view('admin/usuarios/crear', $data);
+			$this->load->view('templates/footer') ;
+		}
 	}
 
 	public function editar()
@@ -85,26 +99,27 @@ class Usuario extends CI_Controller
 		$data['titulo'] = "Actualizar Usuario";
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav');
-		$this->load->view('admin/usuarios/actualizar', $data);
+		$this->load->view('admin/usuarios/editar', $data);
 		$this->load->view('templates/footer');
 	}
 
 	public function actualizar()
 	{
-		$id = $this->uri->segment(3);
-		$nombre = $this->input->post('usuario');
-		$clave = $this->input->post('clave');
+		// $id = $this->uri->segment(3);
+		// $nombre = $this->input->post('usuario');
+		// $clave = $this->input->post('clave');
+		// $datosUsuario = array(
+		// 	'nombreusuario' => $nombre,
+		// 	'clave' => $clave
+		// );
+		// $this->Usuario_model->ActualizarUsuario($id, $datosUsuario);
+		// redirect(base_url()."usuario");
 		$datosUsuario = [
-			'nombreusuario' => $nombre,
-			'clave' => $clave
-		];
-		$this->Usuario_model->ActualizarUsuario($id,$datosUsuario);
-		redirect(base_url()."usuario");
-		$datosUsuario = array(
-			'mombreusuario' => $this->input->post('usuario'),
-			'clave' => $this->input->post('clave')
-			);
-		$data['usuario'] = $this->Usuario_model->Actualizar($this->uri->segment(3), $data);
+				'nombres' => $this->input->post('nombre'),
+				'correo' => $this->input->post('correo'),
+				'usuario' => $this->input->post('usuario')
+			];
+		$this->Usuario_model->ActualizarUsuario($this->uri->segment(3), $datosUsuario);
 		redirect(base_url()."usuario");
 	}
 

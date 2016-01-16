@@ -8,12 +8,17 @@
 			<form action="<?=base_url()?>usuario/actualizar" method="POST">
 				<div class="form-group">
 					<label>Nombre: </label>
-					<input type="text" class="form-control" value="<?= $usuarios->result()[0]->nombreusuario?>" name="usuario">
+					<input type="text" class="form-control" value="<?= $usuarios->result()[0]->nombres?>" name="nombre">
 				</div>
 
 				<div class="form-group">
-					<label>Contraseña: </label>
-					<input type="password" class="form-control" value="<?= $usuarios->result()[0]->clave?>" name="clave">
+					<label>Correo: </label>
+					<input type="text" class="form-control" value="<?= $usuarios->result()[0]->correo?>" name="correo">
+				</div>
+
+				<div class="form-group">
+					<label>Usuario: </label>
+					<input type="text" class="form-control" value="<?= $usuarios->result()[0]->usuario?>" name="usuario">
 				</div>
 
 				<div class="form-group">

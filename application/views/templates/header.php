@@ -9,6 +9,7 @@
     <title>Sistema Notas | <?=$titulo?></title>
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>public/chosen/chosen.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?=base_url()?>public/css/landing-page.css" rel="stylesheet">
     <!-- Custom Fonts -->

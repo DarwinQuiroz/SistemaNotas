@@ -6,15 +6,14 @@
 		<div class="panel-body">
 			<form>
 				<div class="form-group">
-					<label>Año Lectivo: </label>
-					<select class="form-control select-al" placeholder="Choose a country...">
-						<?php foreach ($lectivos->result() as $lectivo): ?>
-							<option values="<?= $lectivo->idañolectivo?>"><?= $lectivo->descripcion ?></option>
-						<?php endforeach ?>
+					<label>Materias: </label>
+					<select class="form-control">
+						<option></option>
+
 					</select>
 				</div>
 					<label>Periodo: </label>
-					<select class="form-control select-p">
+					<select class="form-control">
 						<?php foreach ($periodos->result() as $periodo): ?>
 							<option vlaues="<?= $periodo->idperiodo?>"><?= $periodo->descripcion ?></option>
 						<?php endforeach ?>
@@ -22,7 +21,7 @@
 				</div>
 				<div class="form-group">
 					<label>Cédula: </label>
-					<input type="text" class="form-control" placeholder="Ingrese su número de cedula">
+					<input type="text" class="form-control">
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary">Consultar</button>
