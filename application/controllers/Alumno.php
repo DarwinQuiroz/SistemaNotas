@@ -8,6 +8,10 @@ class Alumno extends CI_Controller
 		parent::__construct();
 		$this->load->model('Alumno_model');
 		$this->load->library('form_validation');
+		if(!$this->session->userdata('login'))
+		{
+			redirect(base_url());
+		}
 	}
 
 	private function Validar()

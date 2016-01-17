@@ -7,7 +7,10 @@ class Usuario extends CI_Controller
 		parent::__construct();
 		$this->load->model('Usuario_model');
 		$this->load->library('form_validation');
-		// $this->VerificarSesion();
+		if(!$this->session->userdata('login'))
+		{
+			redirect(base_url());
+		}
 	}
 
 	public function index()
@@ -24,41 +27,7 @@ class Usuario extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	// function VerificarSesion()
-	// {
-	// 	if(!$this->session->userdata('login'))
-	// 	{
-	// 		redirect(base_url());
-	// 	}
-	// }
 
-	public function login()
-	{
-		$nombreUsuario = $this->input->post('usuario');
-		$password = $this->input->post('clave');
-		$resultado = $this->Usuario_model->IniciarSesion($nombreUsuario);
-		if ($resultado != false)
-		{
-			if ($resultado->clave == $password)
-			{
-				$datosSesion = array(
-					'usuario' => $nombreUsuario,
-					'id' => $resultado->idusuario,
-					'login' => true
-					);
-				$this->session->set_userdata($datosSesion);
-				redirect(base_url()."usuario");
-			}
-			else header("Location: " . base_url());
-		}
-		else header("Location: " . base_url());
-	}
-
-	public function logout()
-	{
-		$this->session->sess_destroy();
-		redirect(base_url());
-	}
 	private function Validar()
 	{
 		$this->form_validation->set_rules('nombre', 'Usuario', 'required|trim|is_unique[usuarios.nombres]');
@@ -77,7 +46,7 @@ class Usuario extends CI_Controller
 				'nombres' => $this->input->post('nombre'),
 				'correo' => $this->input->post('correo'),
 				'usuario' => $this->input->post('usuario'),
-				'clave' => $this->input->post('clave')
+				'clave' => md5($this->input->post('clave'))
 			];
 			$this->Usuario_model->RegistrarUsuario($datosUsuario);
 			redirect(base_url()."usuario");

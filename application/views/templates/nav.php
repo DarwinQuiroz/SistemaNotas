@@ -18,7 +18,7 @@
                       <li><a href="<?=base_url()?>materia">Materias</a></li>
                       <li><a href="<?=base_url()?>notas">Notas</a></li>
                       <li><a href="<?=base_url()?>usuario">Usuarios</a></li>
-                      <li><a href="<?= base_url()?>/usuario/logout">Cerrar Sesión (<?= $this->session->userdata('usuario') ?>)</a></li>
+                      <li><a href="<?= base_url()?>/login/logout">Cerrar Sesión (<?= $this->session->userdata('usuario') ?>)</a></li>
                     <?php else: ?>
                       <li><a href="<?=base_url()?>notas/elegir">Elegir Materias</a></li>
                       <li><a href="<?=base_url()?>notas">Consultas</a></li>
@@ -37,7 +37,7 @@
           <h4 class="modal-title">Iniciar Sesión</h4>
         </div>
         <div class="modal-body">
-          <form action="<?= base_url()?>usuario/login" method="POST" accept-charset='UTF-8' role="form">
+          <form action="<?= base_url()?>login" method="POST" accept-charset='UTF-8' role="form">
             <div class="form-group">
               <label for="usario">Usuario</label>
               <input type="text" name="usuario" placeholder="Usuarios" class="form-control" required>
