@@ -27,24 +27,27 @@
     <script src="<?=base_url()?>public/js/jquery.js"></script>
     <script src="<?=base_url()?>public/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>public/chosen/chosen.jquery.min.js"></script>
-    <script type="text/javascript">
-        // $('.select-al').chosen({
-        //     placeholder_text_single: 'Seleccione un año lectivo',
-        //     max_selected_options: 1,
-        //     search_contains: true,
-        //     no_result_text: 'No se encotraron resultados'
-        // });
-
-        // $('.select-p').chosen({
-        //     placeholder_text_multiple: 'Seleccione un periodo',
-        //     max_selected_options: 2,
-        //     search_contains: true,
-        //     no_result_text: 'No se encotraron resultados'
-        // });
-    </script>
-
-
 </body>
-
-
+<script type="text/javascript">
+        $('.select-periodo').chosen({
+            placeholder_text_single: 'Seleccione un periodo',
+            max_selected_options: 1,
+            search_contains: true,
+            allow_single_deselect: true,
+            no_result_text: 'No se encotraro resultados'
+        });
+        $('.select-nivel').chosen({
+            placeholder_text_single: 'Seleccione un nivel',
+            max_selected_options: 1,
+            search_contains: true,
+            allow_single_deselect: true,
+            no_result_text: 'No se encotraro resultados'
+        });
+        $('.select-notas').chosen({
+            placeholder_text_multiple: 'Seleccione un máximo de 7 materias',
+            max_selected_options: 7,
+            search_contains: true,
+            no_result_text: 'No se encotraron resultados'
+        });
+    </script>
 </html>

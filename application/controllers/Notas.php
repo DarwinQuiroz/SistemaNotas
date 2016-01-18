@@ -6,6 +6,7 @@ class Notas extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Nivel_model');
+		$this->load->model('Nota_model');
 	}
 
 	public function index()
@@ -13,7 +14,6 @@ class Notas extends CI_Controller
 		$data['lectivos'] = $this->Nivel_model->ObtenerLectivo();
 		$data['periodos'] = $this->Nivel_model->ObtenerPeriodo();
 		$data['titulo'] = "Consulta de Notas";
-		// $data['usuarios'] = $this->Notas_model->ConsultarNotas();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav');
 		$this->load->view('notas/index', $data);
@@ -23,7 +23,10 @@ class Notas extends CI_Controller
 	public function elegir()
 	{
 		$data['periodos'] = $this->Nivel_model->ObtenerPeriodo();
+		$data['materias'] = $this->Nota_model->ObtenerMaterias();
+		$data['niveles'] = $this->Nota_model->ObtenerNiveles();
 		$data['titulo'] = "Elegir Materias";
+		//$data['idnivel'] = $_POST['nivel'];
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/nav');
 		$this->load->view('notas/elegir', $data);
