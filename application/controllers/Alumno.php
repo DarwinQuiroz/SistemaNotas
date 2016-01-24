@@ -67,6 +67,32 @@ class Alumno extends CI_Controller
 		}
 	}
 
+	public function editar()
+	{
+		$data['id'] = $this->uri->segment(3);
+		$data['alumnos'] = $this->Alumno_model->ObtenerAlumno($data['id']);
+		$data['titulo'] = "Actualizar Alumno";
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/nav');
+		$this->load->view('admin/alumnos/editar', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function actualizar()
+	{
+		$data['id'] = $this->uri->segment(3);
+		$datosAlumno = [
+				'cedula' => $this->input->post('cedula'),
+				'nombres' => $this->input->post('nombres'),
+				'apellidos' => $this->input->post('apellidos'),
+				'telefono' => $this->input->post('telefono'),
+				'direccion' => $this->input->post('direccion'),
+				'correo' => $this->input->post('correo')
+			];
+		$this->Alumno_model->ActualizarAlumno($this->uri->segment(3), $datosAlumno);
+		redirect(base_url()."alumno");
+	}
+
 	public function eliminar()
 	{
 		$id = $this->uri->segment(3);

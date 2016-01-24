@@ -5,7 +5,7 @@ class Alumno_model extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
-		$this->db->from('alumno')->order_by("idalumno", "desc");
+		//$this->db->from('alumno')->order_by("idalumno", "desc");
 	}
 
 	public function RegistrarAlumno($datosAlumno)
@@ -40,7 +40,7 @@ class Alumno_model extends CI_Model
 
 	public function ActualizarAlumno($id, $datosAlumno)
 	{
-		$this->db->where('idalumno', $id);
+		$this->db->where('idalumno', $cedula);
 		$this->db->update('alumno', $datosAlumno);
 	}
 

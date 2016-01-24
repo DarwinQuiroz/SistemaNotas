@@ -38,7 +38,7 @@
 									<td><?= $alumno->direccion ?></td>
 									<td><?= $alumno->correo ?></td>
 									<td>
-										<a href="" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Editar</a>
+										<a href="<?= base_url() ?>alumno/editar/<?=$alumno->idalumno?>" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Editar</a>
 										<a href="<?= base_url()?>alumno/eliminar/<?=$alumno->idalumno?>" onclick="return confirm('¿Seguro desea eliminar este usuario?')" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar</a>
 									</td>
 								</tr>
