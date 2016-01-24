@@ -6,6 +6,7 @@ class Profesor_model extends CI_Model
 	{
 		parent::__construct();
 	}
+
 	public function ObtenerFacultades()
 	{
 		$query = $this->db->get('facultad');

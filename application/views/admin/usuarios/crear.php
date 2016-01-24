@@ -8,27 +8,27 @@
 			<form action="<?=base_url()?>usuario/crear" method="POST">
 				<div class="form-group">
 					<label>Nombres: </label>
-					<input type="text" class="form-control" name="nombre">
+					<input type="text" class="form-control" name="nombre" value="<?= set_value('nombre') ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Correo: </label>
-					<input type="text" class="form-control" name="correo">
+					<input type="text" class="form-control" name="correo" value="<?= set_value('correo') ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Usuario: </label>
-					<input type="text" class="form-control" name="usuario">
+					<input type="text" class="form-control" name="usuario" value="<?= set_value('usuario') ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Contraseña: </label>
-					<input type="password" class="form-control" name="clave">
+					<input type="password" class="form-control" name="clave" value="<?= set_value('clave') ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Confirme Contraseña: </label>
-					<input type="password" class="form-control" name="claveConfirm">
+					<input type="password" class="form-control" name="claveConfirm" value="<?= set_value('claveConfirm') ?>">
 				</div>
 
 				<div class="form-group">

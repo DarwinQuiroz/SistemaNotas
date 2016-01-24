@@ -6,6 +6,16 @@ class Materia_model extends CI_Model
 	{
 		parent::__construct();
 	}
+
+	public function buscar($materia)
+	{
+		$this->db->like('descripcion', $materia);
+		$consulta = $this->db->get('materia');
+
+		if($consulta->num_rows() > 0) return $consulta;
+		else return false;
+	}
+
 	public function ObtenerNiveles()
 	{
 		$query = $this->db->get('nivel');
@@ -21,9 +31,9 @@ class Materia_model extends CI_Model
 
 	public function ObtenerMaterias()
 	{
-		$query = $this->db->get('materia');
+		$consulta = $this->db->query('SELECT nivel.idnivel, nivel.descripcion as nivel, materia.idmateria, materia.descripcion, materia.credito FROM nivel INNER JOIN materia ON nivel.idnivel = materia.idmateria');
 
-		if ($query->num_rows() > 0) return $query;
+		if ($consulta->num_rows() > 0) return $consulta;
 		else return false;
 	}
 

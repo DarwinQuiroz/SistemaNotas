@@ -18,12 +18,12 @@
 
 				<div class="form-group">
 					<label>Materia: </label>
-					<input type="text" class="form-control" name="materia">
+					<input type="text" class="form-control" name="materia" value="<?= set_value('materia') ?>">
 				</div>
 
 				<div class="form-group">
 					<label>Creditos: </label>
-					<input type="number" class="form-control" name="creditos">
+					<input type="number" class="form-control" name="creditos" value="<?= set_value('creditos') ?>">
 				</div>
 
 				<div class="form-group">

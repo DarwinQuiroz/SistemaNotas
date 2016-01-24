@@ -30,7 +30,7 @@ class Usuario extends CI_Controller
 
 	private function Validar()
 	{
-		$this->form_validation->set_rules('nombre', 'Usuario', 'required|trim|is_unique[usuarios.nombres]');
+		$this->form_validation->set_rules('nombre', 'Nombres', 'required|trim|is_unique[usuarios.nombres]');
 		$this->form_validation->set_rules('correo', 'Correo', 'required|trim|valid_email|is_unique[usuarios.correo]');
 		$this->form_validation->set_rules('usuario', 'Usuario', 'required|trim|is_unique[usuarios.usuario]');
 		$this->form_validation->set_rules('clave', 'Contraseña', 'required|trim|min_length[8]');

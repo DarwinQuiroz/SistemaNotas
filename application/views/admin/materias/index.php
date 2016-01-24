@@ -1,13 +1,20 @@
 
-<div class="container no-padding text-center">
+<div class="container no-padding">
 	<div class="panel panel-default">
-		<div class="panel-heading">
+		<div class="panel-heading text-center">
 			<h3 class="panel-title"><strong><?=$titulo?></strong></h3>
 		</div>
 		<div class="panel-body">
 			<a href="<?=base_url()?>materia/crear" class="btn btn-default">Registrar Nueva Materia</a>
+			<form action="<?= base_url()?>materia" method="GET" class="navbar-form pull-right">
+				<div class="input-group">
+					<input type="text" name="nombre" class="form-control" placeholder="Buscar materia..." aria-describedy="search">
+					<span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+				</div>
+			</form>
+			<hr>
 			<div class="table-responsive">
-				<table class="table  table-bordered table-hover table-condensed">
+				<table class="table  table-bordered table-hover table-condensed text-center">
 					<thead>
 						<td>Nivel</td>
 						<td>Materia</td>
@@ -18,9 +25,7 @@
 						<?php if ($materias): ?>
 							<?php foreach ($materias->result() as $materia): ?>
 								<tr>
-									<?php foreach ($niveles->result() as $nivel): ?>
-										<td><?= $nivel->idnivel ?></td>
-									<?php endforeach ?>
+									<td><?= $materia->nivel ?></td>
 									<td><?= $materia->descripcion ?></td>
 									<td><?= $materia->credito ?></td>
 									<td>

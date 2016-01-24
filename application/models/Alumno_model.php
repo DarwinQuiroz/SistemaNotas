@@ -5,7 +5,14 @@ class Alumno_model extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
+		$this->db->from('alumno')->order_by("idalumno", "desc");
 	}
+
+	public function RegistrarAlumno($datosAlumno)
+	{
+		$this->db->insert('alumno', $datosAlumno);
+	}
+
 	public function ObtenerFacultades()
 	{
 		$query = $this->db->get('facultad');
@@ -14,16 +21,10 @@ class Alumno_model extends CI_Model
 		else return false;
 	}
 
-	public function RegistrarAlumno($datosAlumno)
-	{
-		$this->db->insert('alumno', $datosAlumno);
-	}
-
 	public function ObtenerAlumnos()
 	{
-		$query = $this->db->get('alumno');
-
-		if ($query->num_rows() > 0) return $query;
+		$consulta = $this->db->query('SELECT facultad.idfacultad, facultad.descripcion, alumno.* FROM alumno INNER JOIN facultad on alumno.idfacultad = facultad.idfacultad');
+		if ($consulta->num_rows() > 0) return $consulta;
 		else return false;
 	}
 

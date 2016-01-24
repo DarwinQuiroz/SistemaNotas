@@ -8,6 +8,7 @@ class Materia extends CI_Controller
 		parent::__construct();
 		$this->load->model('Materia_model');
 		$this->load->library('form_validation');
+		// $this->load->library('pagination');
 		if(!$this->session->userdata('login'))
 		{
 			redirect(base_url());
@@ -23,9 +24,13 @@ class Materia extends CI_Controller
 
 	public function index()
 	{
+		// $config['base_url'] = base_url().'materia';
+		// $config['total_row'] = 50; //cantidad de materias guardadas
+		// $config['per_page'] = 5;
+		// $this->pagination->initialize($config);
 		$data['segmento'] = $this->uri->segment(3);
 		$data['titulo'] = "Lista de Materias";
-		$data['niveles'] = $this->Materia_model->ObtenerNiveles();
+		// $data['niveles'] = $this->Materia_model->ObtenerNiveles();
 		$this->load->view('templates/header', $data);
 
 		if(!$data['segmento']) $data['materias'] = $this->Materia_model->ObtenerMaterias();

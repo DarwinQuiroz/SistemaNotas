@@ -17,12 +17,12 @@ class Profesor extends CI_Controller
 	private function Validar()
 	{
 		$this->form_validation->set_rules('facultad', 'Facultad', 'required');
-		$this->form_validation->set_rules('cedula', 'Cedula', 'required|trim|min_length[11]');
-		$this->form_validation->set_rules('nombres', 'Nombres', 'required|min_length[11]');
-		$this->form_validation->set_rules('apellidos', 'Apellidos', 'required|min_length[11]');
-		$this->form_validation->set_rules('telefono', 'Telefono', 'required|trim|min_length[10]');
-		$this->form_validation->set_rules('direccion', 'Direccion', 'required|trim|min_length[6]');
-		$this->form_validation->set_rules('correo', 'Correo', 'required|trim|valid_email');
+		$this->form_validation->set_rules('cedula', 'Cedula', 'required|trim|min_length[11]|max_length[11]|is_unique[profesor.cedula]');
+		$this->form_validation->set_rules('nombres', 'Nombres', 'required|min_length[4]|max_length[50]');
+		$this->form_validation->set_rules('apellidos', 'Apellidos', 'required|min_length[4]|max_length[50]');
+		$this->form_validation->set_rules('telefono', 'Telefono', 'required|trim|min_length[10]|max_length[11]');
+		$this->form_validation->set_rules('direccion', 'Direccion', 'required|trim|min_length[6]|max_length[45]');
+		$this->form_validation->set_rules('correo', 'Correo', 'required|trim|valid_email|max_length[50]|valid_email');
 	}
 
 	public function index()
