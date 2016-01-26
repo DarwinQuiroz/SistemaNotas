@@ -7,6 +7,7 @@ class Usuario extends CI_Controller
 		parent::__construct();
 		$this->load->model('Usuario_model');
 		$this->load->library('form_validation');
+		$this->load->library('pagination');
 		if(!$this->session->userdata('login'))
 		{
 			redirect(base_url());

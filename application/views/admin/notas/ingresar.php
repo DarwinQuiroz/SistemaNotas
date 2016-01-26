@@ -16,8 +16,19 @@
 				</div>
 
 				<div class="form-group">
+					<label class="">Alumno</label>
+					<select class="form-control alumno" name="alumno">
+						<option></option>
+						<?php foreach ($alumnos->result() as $alumno): ?>
+							<option value="<?= $alumno->idalumno ?>"><?= $alumno->nombres.' '.$alumno->apellidos ?></option>
+						<?php endforeach ?>
+					</select>
+				</div>
+
+				<div class="form-group">
 					<label class="">Materia</label>
-					<select class="form-control" name="materia">
+					<select class="form-control materia" name="materia">
+						<option></option>
 						<?php foreach ($materias->result() as $materia): ?>
 							<option value="<?= $materia->idmateria ?>"><?= $materia->descripcion ?></option>
 						<?php endforeach ?>
@@ -26,7 +37,7 @@
 
 				<div class="form-group">
 					<label>Nota: </label>
-					<input type="text" class="form-control" name="nota">
+					<input type="number" class="form-control" name="nota" placeholder="Ingrese la nota">
 				</div>
 
 				<div class="form-group">
@@ -36,3 +47,5 @@
 		</div>
 	</div>
 </div>
+
+

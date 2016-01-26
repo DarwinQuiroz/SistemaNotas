@@ -7,6 +7,7 @@ class Notas extends CI_Controller
 		parent::__construct();
 		$this->load->model('Nivel_model');
 		$this->load->model('Nota_model');
+		$this->load->model('Alumno_model');
 	}
 
 	public function index()
@@ -44,12 +45,21 @@ class Notas extends CI_Controller
 
 	public function ingresar()
 	{
-		$data['materias'] = $this->Nota_model->ObtenerMaterias();
-		$data['titulo'] = "Ingresar Notas";
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/nav');
-		$this->load->view('admin/notas/ingresar', $data);
-		$this->load->view('templates/footer');
+		if(!$this->session->userdata('login'))
+		{
+			redirect(base_url());
+		}
+		else
+		{
+			$data['materias'] = $this->Nota_model->ObtenerMaterias();
+			$data['alumnos'] = $this->Alumno_model->ObtenerAlumnos();
+			$data['titulo'] = "Ingresar Notas";
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/nav');
+			$this->load->view('admin/notas/ingresar', $data);
+			$this->load->view('templates/footer');
+			//redirect(base_url().'notas/ingresar');
+		}
 	}
 
 	public function registrarNota()
@@ -59,5 +69,6 @@ class Notas extends CI_Controller
 		print $_POST['parcial'];
 		print $_POST['materia'];
 		print $this->input->post('nota');
+		redirect(base_url().'notas/ingresar');
 	}
 }

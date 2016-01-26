@@ -2,7 +2,7 @@
 <div class="container text-center no-padding">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title"><strong><?=$titulo?></strong></h3>
+			<h3 class="panel-title"><strong><?=$titulo.': '.$materia->result()[0]->descripcion?></strong></h3>
 		</div>
 		<div class="panel-body">
 			<form class="" action="<?=base_url()?>materia/actualizar" method="POST">
@@ -21,7 +21,7 @@
 				</div>
 
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary">Actualizar</button>
+					<button type="submit" class="btn btn-primary">Actualizar <i class="fa fa-refresh"></i></button>
 				</div>
 			</form>
 			<hr>

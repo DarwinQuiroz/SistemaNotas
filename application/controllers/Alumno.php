@@ -8,6 +8,7 @@ class Alumno extends CI_Controller
 		parent::__construct();
 		$this->load->model('Alumno_model');
 		$this->load->library('form_validation');
+		$this->load->library('pagination');
 		if(!$this->session->userdata('login'))
 		{
 			redirect(base_url());
@@ -25,8 +26,15 @@ class Alumno extends CI_Controller
 		$this->form_validation->set_rules('correo', 'Correo', 'required|trim|valid_email|max_length[50]|valid_email');
 	}
 
-	public function index()
+	public function index($pagina = FALSE)
 	{
+		$inicio = 0;
+		$limite = 5;
+		$config['base_url'] = base_url().'alumno/';
+		$config['total_rows'] = 11;
+		$config['per_page'] = 5;
+		$this->pagination->initialize($config);
+
 		$data['segmento'] = $this->uri->segment(3);
 		$data['titulo'] = "Lista de Alumnos";
 		$this->load->view('templates/header', $data);

@@ -5,7 +5,7 @@
 			<h3 class="panel-title"><strong><?=$titulo?></strong></h3>
 		</div>
 		<div class="panel-body">
-			<a href="<?=base_url()?>profesor/crear" class="btn btn-default">Registrar Nuevo Profesor</a>
+			<a href="<?=base_url()?>profesor/crear" class="btn btn-default">Registrar Nuevo Profesor <i class="fa fa-user fa-fw"></i></a>
 			<form action="<?= base_url()?>profesor" method="GET" class="navbar-form pull-right">
 				<div class="input-group">
 					<input type="text" name="nombre" class="form-control" placeholder="Buscar profesor..." aria-describedy="search">
@@ -39,8 +39,8 @@
 									<td><?= $profesor->direccion ?></td>
 									<td><?= $profesor->correo ?></td>
 									<td>
-										<a href="<?= base_url() ?>profesor/editar/<?= $profesor->idprofesor?>" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Editar</a>
-										<a href="<?= base_url()?>profesor/eliminar/<?=$profesor->idprofesor?>" onclick="return confirm('¿Seguro desea eliminar este profesor?')" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar</a>
+										<a href="<?= base_url() ?>profesor/editar/<?= $profesor->idprofesor?>" class="btn btn-xs btn-warning"><i class="fa fa-pencil fa-fw"></i> Editar</a>
+										<a href="<?= base_url()?>profesor/eliminar/<?=$profesor->idprofesor?>" onclick="return confirm('¿Seguro desea eliminar este profesor?')" class="btn btn-xs btn-danger"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a>
 									</td>
 								</tr>
 							<?php endforeach ?>

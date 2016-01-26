@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="<?=base_url()?>">Sistema Notas</a>
+                <a class="navbar-brand topnav" href="<?=base_url()?>"><i class="fa fa-home fa-fw"></i>&nbsp; Sistema Notas</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -16,20 +16,20 @@
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                          <li><a href="<?=base_url()?>alumno">Alumnos</a></li>
-                          <li><a href="<?=base_url()?>profesor">Profesores</a></li>
-                          <li><a href="<?=base_url()?>materia">Materias</a></li>
-                          <li><a href="<?=base_url()?>usuario">Usuarios</a></li>
+                          <li><a href="<?=base_url()?>alumno"><i class="fa fa-user fa-fw"></i> Alumnos</a></li>
+                          <li><a href="<?=base_url()?>profesor"><i class="fa fa-user fa-fw"></i> Profesores</a></li>
+                          <li><a href="<?=base_url()?>materia"><i class="fa fa-book fa-fw"></i> Materias</a></li>
+                          <li><a href="<?=base_url()?>usuario"><i class="fa fa-users"></i> Usuarios</a></li>
                         </ul>
                       </li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notas<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                          <li><a href="<?=base_url()?>notas/ingresar">Ingresar Notas</a></li>
-                          <li><a href="<?=base_url()?>notas">Consultar Notas</a></li>
+                          <li><a href="<?=base_url()?>notas/ingresar"><i class="fa fa-plus"></i>  Ingresar Notas</a></li>
+                          <li><a href="<?=base_url()?>notas"><i class="fa fa-archive"></i>  Consultar Notas</a></li>
                         </ul>
                       </li>
-                      <li><a href="<?= base_url()?>/login/logout">Cerrar Sesión (<?= $this->session->userdata('usuario') ?>)</a></li>
+                      <li><a href="<?= base_url()?>/login/logout">Cerrar Sesión (<?= $this->session->userdata('usuario') ?>) </a></li>
                     <?php else: ?>
                       <li><a href="<?=base_url()?>notas/elegir">Elegir Materias</a></li>
                       <li><a href="<?=base_url()?>notas">Consultas</a></li>

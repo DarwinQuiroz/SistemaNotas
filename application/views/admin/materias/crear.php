@@ -27,7 +27,7 @@
 				</div>
 
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary">Guardar</button>
+					<button type="submit" class="btn btn-primary">Guardar &nbsp;<i class="fa fa-floppy-o"></i></button>
 				</div>
 			</form>
 			<hr>
