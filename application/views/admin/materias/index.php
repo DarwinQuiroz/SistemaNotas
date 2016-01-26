@@ -29,7 +29,7 @@
 									<td><?= $materia->descripcion ?></td>
 									<td><?= $materia->credito ?></td>
 									<td>
-										<a href="" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Editar</a>
+										<a href="<?=base_url()?>materia/editar/<?=$materia->idmateria?>" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Editar</a>
 										<a href="<?= base_url()?>materia/eliminar/<?=$materia->idmateria?>" onclick="return confirm('¿Seguro desea eliminar este materia?')" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar</a>
 									</td>
 								</tr>

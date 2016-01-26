@@ -41,4 +41,23 @@ class Notas extends CI_Controller
 		$this->load->view('notas/consulta', $data);
 		$this->load->view('templates/footer');
 	}
+
+	public function ingresar()
+	{
+		$data['materias'] = $this->Nota_model->ObtenerMaterias();
+		$data['titulo'] = "Ingresar Notas";
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/nav');
+		$this->load->view('admin/notas/ingresar', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function registrarNota()
+	{
+		$this->Nota_model->registrarNota($_POST['parcial'], $_POST['materia'], $this->input->post('nota'));
+		// redirect(base_url().'nota');
+		print $_POST['parcial'];
+		print $_POST['materia'];
+		print $this->input->post('nota');
+	}
 }

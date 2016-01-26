@@ -6,9 +6,17 @@ class Nota_model extends CI_Model
 		parent::__construct();
 	}
 
-	public function ConcentradoNotas()
+	public function registrarNota($bandera, $idMateria, $nota)
 	{
+		$consulta = $this->db->query('SELECT IngresarNotas('.$bandera.','.$idMateria.','.$nota.')');
 
+		if($consulta->num_rows() > 0) return $consulta;
+		else return false;
+	}
+
+	public function ConsultaNota($cedula)
+	{
+		$consulta = $this->db->query('');
 	}
 
 	public function ObtenerMaterias()

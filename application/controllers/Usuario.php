@@ -74,21 +74,12 @@ class Usuario extends CI_Controller
 
 	public function actualizar()
 	{
-		// $id = $this->uri->segment(3);
-		// $nombre = $this->input->post('usuario');
-		// $clave = $this->input->post('clave');
-		// $datosUsuario = array(
-		// 	'nombreusuario' => $nombre,
-		// 	'clave' => $clave
-		// );
-		// $this->Usuario_model->ActualizarUsuario($id, $datosUsuario);
-		// redirect(base_url()."usuario");
 		$datosUsuario = [
 				'nombres' => $this->input->post('nombre'),
 				'correo' => $this->input->post('correo'),
 				'usuario' => $this->input->post('usuario')
 			];
-		$this->Usuario_model->ActualizarUsuario($this->uri->segment(3), $datosUsuario);
+		$this->Usuario_model->ActualizarUsuario($this->input->post('id'), $datosUsuario);
 		redirect(base_url()."usuario");
 	}
 

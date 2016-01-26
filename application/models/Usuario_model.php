@@ -8,8 +8,6 @@ class Usuario_model extends CI_Model
 
 	public function IniciarSesion($usuario)
 	{
-		// $this->db->where('usuario', $usuario)->where('clave', $clave);
-		// $consulta = $this->db->get('usuarios');
 		$consulta = $this->db->query("SELECT * FROM usuarios WHERE usuario = '".$usuario."' LIMIT 1");
 
 		if($consulta ->num_rows() > 0) return $consulta->row();

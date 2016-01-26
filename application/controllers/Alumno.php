@@ -80,7 +80,6 @@ class Alumno extends CI_Controller
 
 	public function actualizar()
 	{
-		$data['id'] = $this->uri->segment(3);
 		$datosAlumno = [
 				'cedula' => $this->input->post('cedula'),
 				'nombres' => $this->input->post('nombres'),
@@ -89,7 +88,7 @@ class Alumno extends CI_Controller
 				'direccion' => $this->input->post('direccion'),
 				'correo' => $this->input->post('correo')
 			];
-		$this->Alumno_model->ActualizarAlumno($this->uri->segment(3), $datosAlumno);
+		$this->Alumno_model->ActualizarAlumno($this->input->post('id'), $datosAlumno);
 		redirect(base_url()."alumno");
 	}
 

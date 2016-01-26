@@ -39,7 +39,7 @@
 									<td><?= $profesor->direccion ?></td>
 									<td><?= $profesor->correo ?></td>
 									<td>
-										<a href="" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Editar</a>
+										<a href="<?= base_url() ?>profesor/editar/<?= $profesor->idprofesor?>" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Editar</a>
 										<a href="<?= base_url()?>profesor/eliminar/<?=$profesor->idprofesor?>" onclick="return confirm('¿Seguro desea eliminar este profesor?')" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar</a>
 									</td>
 								</tr>

@@ -6,6 +6,9 @@
 		</div>
 		<div class="panel-body">
 			<form class="" action="<?=base_url()?>alumno/actualizar" method="POST">
+				<div class="form-group">
+					<input type="hidden" class="form-control" name="id" value="<?= $alumnos->result()[0]->idalumno?>">
+				</div>
 
 				<div class="form-group">
 					<label>Cedula: </label>

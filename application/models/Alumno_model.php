@@ -8,6 +8,16 @@ class Alumno_model extends CI_Model
 		//$this->db->from('alumno')->order_by("idalumno", "desc");
 	}
 
+	public function NumAlumnos()
+	{
+		$number = $this->db->query('SELECT count(*) as numeroAlumnos from alumno')->row()->number;
+		return intval($number);
+	}
+	public GetPagination($number_per_page)
+	{
+		$this->db->get('alumno', $number_per_page, $this->uri->segment(3));
+	}
+
 	public function RegistrarAlumno($datosAlumno)
 	{
 		$this->db->insert('alumno', $datosAlumno);
@@ -40,7 +50,7 @@ class Alumno_model extends CI_Model
 
 	public function ActualizarAlumno($id, $datosAlumno)
 	{
-		$this->db->where('idalumno', $cedula);
+		$this->db->where('idalumno', $id);
 		$this->db->update('alumno', $datosAlumno);
 	}
 

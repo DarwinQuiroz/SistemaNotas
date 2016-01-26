@@ -13,11 +13,22 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <?php if ($this->session->userdata('login')): ?>
-                      <li><a href="<?=base_url()?>alumno">Alumnos</a></li>
-                      <li><a href="<?=base_url()?>profesor">Profesores</a></li>
-                      <li><a href="<?=base_url()?>materia">Materias</a></li>
-                      <li><a href="<?=base_url()?>notas">Notas</a></li>
-                      <li><a href="<?=base_url()?>usuario">Usuarios</a></li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="<?=base_url()?>alumno">Alumnos</a></li>
+                          <li><a href="<?=base_url()?>profesor">Profesores</a></li>
+                          <li><a href="<?=base_url()?>materia">Materias</a></li>
+                          <li><a href="<?=base_url()?>usuario">Usuarios</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notas<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="<?=base_url()?>notas/ingresar">Ingresar Notas</a></li>
+                          <li><a href="<?=base_url()?>notas">Consultar Notas</a></li>
+                        </ul>
+                      </li>
                       <li><a href="<?= base_url()?>/login/logout">Cerrar Sesión (<?= $this->session->userdata('usuario') ?>)</a></li>
                     <?php else: ?>
                       <li><a href="<?=base_url()?>notas/elegir">Elegir Materias</a></li>

@@ -67,6 +67,28 @@ class Materia extends CI_Controller
 		}
 	}
 
+	public function editar()
+	{
+		$data['niveles'] = $this->Materia_model->ObtenerNiveles();
+		$data['id'] = $this->uri->segment(3);
+		$data['materia'] = $this->Materia_model->ObtenerMateria($data['id']);
+		$data['titulo'] = "Actualizar Materia";
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/nav');
+		$this->load->view('admin/materias/editar', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function actualizar()
+	{
+		$datosMateria = [
+				'descripcion' => $this->input->post('materia'),
+				'credito' => $this->input->post('creditos'),
+			];
+		$this->Materia_model->ActualizarMateria($this->input->post('id'), $datosMateria);
+		redirect(base_url()."materia");
+	}
+
 	public function eliminar()
 	{
 		$id = $this->uri->segment(3);

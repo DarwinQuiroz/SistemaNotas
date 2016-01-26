@@ -69,6 +69,31 @@ class Profesor extends CI_Controller
 		}
 	}
 
+	public function editar()
+	{
+		$data['id'] = $this->uri->segment(3);
+		$data['profesor'] = $this->Profesor_model->ObtenerProfesor($data['id']);
+		$data['titulo'] = "Actualizar Profesor";
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/nav');
+		$this->load->view('admin/profesores/editar', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function actualizar()
+	{
+		$datosProfesor = [
+				'cedula' => $this->input->post('cedula'),
+				'nombres' => $this->input->post('nombres'),
+				'apellidos' => $this->input->post('apellidos'),
+				'telefono' => $this->input->post('telefono'),
+				'direccion' => $this->input->post('direccion'),
+				'correo' => $this->input->post('correo')
+			];
+		$this->Profesor_model->ActualizarProfesor($this->input->post('id'), $datosProfesor);
+		redirect(base_url()."profesor");
+	}
+
 	public function eliminar()
 	{
 		$id = $this->uri->segment(3);

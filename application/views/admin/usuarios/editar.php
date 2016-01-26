@@ -7,18 +7,22 @@
 		<div class="panel-body">
 			<form action="<?=base_url()?>usuario/actualizar" method="POST">
 				<div class="form-group">
+					<input type="hidden" class="form-control" name="id" value="<?= $usuarios->result()[0]->idusuario?>">
+				</div>
+
+				<div class="form-group">
 					<label>Nombre: </label>
-					<input type="text" class="form-control" value="<?= $usuarios->result()[0]->nombres?>" name="nombre">
+					<input type="text" class="form-control" name="nombre" value="<?= $usuarios->result()[0]->nombres?>">
 				</div>
 
 				<div class="form-group">
 					<label>Correo: </label>
-					<input type="text" class="form-control" value="<?= $usuarios->result()[0]->correo?>" name="correo">
+					<input type="text" class="form-control"  name="correo" value="<?= $usuarios->result()[0]->correo?>" >
 				</div>
 
 				<div class="form-group">
 					<label>Usuario: </label>
-					<input type="text" class="form-control" value="<?= $usuarios->result()[0]->usuario?>" name="usuario">
+					<input type="text" class="form-control" name="usuario" value="<?= $usuarios->result()[0]->usuario?>">
 				</div>
 
 				<div class="form-group">
