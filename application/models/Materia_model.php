@@ -31,7 +31,7 @@ class Materia_model extends CI_Model
 
 	public function ObtenerMaterias()
 	{
-		$consulta = $this->db->query('SELECT nivel.idnivel, nivel.descripcion as nivel, materia.idmateria, materia.descripcion, materia.credito FROM nivel INNER JOIN materia ON nivel.idnivel = materia.idmateria');
+		$consulta = $this->db->query('SELECT nivel.idnivel, nivel.descripcion as nivel , materia.idmateria, materia.descripcion, materia.credito FROM nivel INNER JOIN materia ON nivel.idnivel = materia.idnivel');
 
 		if ($consulta->num_rows() > 0) return $consulta;
 		else return false;

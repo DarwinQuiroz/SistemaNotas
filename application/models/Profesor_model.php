@@ -23,8 +23,9 @@ class Profesor_model extends CI_Model
 	public function ObtenerProfesores()
 	{
 		$query = $this->db->get('profesor');
+		$consulta = $this->db->query('SELECT facultad.idfacultad, facultad.descripcion, profesor.* FROM profesor INNER JOIN facultad on profesor.idfacultad = facultad.idfacultad');
 
-		if ($query->num_rows() > 0) return $query;
+		if ($consulta->num_rows() > 0) return $consulta;
 		else return false;
 	}
 

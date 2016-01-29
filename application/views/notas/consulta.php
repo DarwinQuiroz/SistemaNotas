@@ -6,9 +6,10 @@
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive">
-				<label>Nombres: </label><br>
-				<label>Cedula: </label><br>
-				<label>Facultad: </label><br>
+				<label>Nombres: <?= $notas->result()[0]->nombres.' '.$notas->result()[0]->apellidos ?></label><br>
+				<label>Cedula: <?= $notas->result()[0]->cedula ?></label><br>
+				<label>Facultad: <?= $notas->result()[0]->descripcion ?></label><br>
+				<hr>
 				<table class="table table-striped table-hover table-condensed">
 					<thead>
 						<td>Materia</td>

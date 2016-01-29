@@ -29,6 +29,7 @@
                           <li><a href="<?=base_url()?>notas"><i class="fa fa-archive"></i>  Consultar Notas</a></li>
                         </ul>
                       </li>
+                      <li><a href="<?=base_url()?>notas/elegir">Elegir Materias</a></li>
                       <li><a href="<?= base_url()?>/login/logout">Cerrar Sesión (<?= $this->session->userdata('usuario') ?>) </a></li>
                     <?php else: ?>
                       <li><a href="<?=base_url()?>notas/elegir">Elegir Materias</a></li>

@@ -24,7 +24,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="<?=base_url()?>public/js/guardarMaterias.js"></script>
     <script src="<?=base_url()?>public/chosen/chosen.jquery.min.js"></script>
 </body>
 <script type="text/javascript">

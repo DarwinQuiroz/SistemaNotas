@@ -16,12 +16,15 @@ class Nota_model extends CI_Model
 
 	public function ConsultaNota($cedula)
 	{
-		$consulta = $this->db->query('');
+		$consulta = $this->db->query('SELECT alumno.*, facultad.* FROM alumno INNER JOIN facultad on alumno.idfacultad = facultad.idfacultad WHERE alumno.cedula = '.$this->db->escape($cedula));
+		if ($consulta->num_rows() > 0)	return $consulta;
+		else return false;
 	}
 
 	public function ObtenerMaterias()
 	{
-		$query = $this->db->get('materia');
+		$query = $this->db->query('SELECT * FROM materia');
+		//$query = $this->db->get('materia');
 		if ($query->num_rows() > 0)	return $query;
 		else return false;
 	}

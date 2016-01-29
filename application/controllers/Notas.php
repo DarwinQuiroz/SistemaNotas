@@ -8,6 +8,7 @@ class Notas extends CI_Controller
 		$this->load->model('Nivel_model');
 		$this->load->model('Nota_model');
 		$this->load->model('Alumno_model');
+		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -34,36 +35,59 @@ class Notas extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
+	public function GuardarEleccion()
+	{
+		$id['ids'] = $_POST['materia'];
+		echo $id['ids'];
+	}
+
 	public function Consulta()
 	{
-		$data['titulo'] = "Concentrado de Notas";
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/nav');
-		$this->load->view('notas/consulta', $data);
-		$this->load->view('templates/footer');
+		$this->form_validation->set_rules('cedula', 'Cedula', 'required');
+		$data['cedula'] = $this->input->post('cedula');
+		if ($this->form_validation->run() != FALSE)
+		{
+			$data['titulo'] = "Concentrado de Notas";
+			$data['notas'] = $this->Nota_model->ConsultaNota($data['cedula']);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/nav');
+			$this->load->view('notas/consulta', $data);
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			redirect(base_url().'notas');
+		}
 	}
 
 	public function ingresar()
 	{
+
 		if(!$this->session->userdata('login'))
 		{
 			redirect(base_url());
 		}
 		else
 		{
-			$data['materias'] = $this->Nota_model->ObtenerMaterias();
-			$data['alumnos'] = $this->Alumno_model->ObtenerAlumnos();
-			$data['titulo'] = "Ingresar Notas";
-			$this->load->view('templates/header', $data);
-			$this->load->view('templates/nav');
-			$this->load->view('admin/notas/ingresar', $data);
-			$this->load->view('templates/footer');
-			//redirect(base_url().'notas/ingresar');
+			// if ($this->form_validation->run() != FALSE)
+			// {
+				$data['materias'] = $this->Nota_model->ObtenerMaterias();
+				$data['alumnos'] = $this->Alumno_model->ObtenerAlumnos();
+				$data['titulo'] = "Ingresar Notas";
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/nav');
+				$this->load->view('admin/notas/ingresar', $data);
+				$this->load->view('templates/footer');
+				//redirect(base_url().'notas/ingresar');
+			// }
 		}
 	}
 
 	public function registrarNota()
 	{
+		// $this->form_validation->set_rules('alumno', 'Alumno', 'required');
+		// $this->form_validation->set_rules('materia', 'Materia', 'required');
+		// $this->form_validation->set_rules('nota', 'Nota', 'required');
 		$this->Nota_model->registrarNota($_POST['parcial'], $_POST['materia'], $this->input->post('nota'));
 		// redirect(base_url().'nota');
 		print $_POST['parcial'];

@@ -29,9 +29,7 @@
 						<?php if ($profesores): ?>
 							<?php foreach ($profesores->result() as $profesor): ?>
 								<tr>
-									<?php foreach($facultades->result() as $facultad): ?>
-										<td><?= $facultad->descripcion ?></td>
-									<?php endforeach ?>
+									<td><?= $profesor->descripcion ?></td>
 									<td><?= $profesor->cedula ?></td>
 									<td><?= $profesor->nombres ?></td>
 									<td><?= $profesor->apellidos ?></td>

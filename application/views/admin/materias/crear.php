@@ -22,6 +22,16 @@
 				</div>
 
 				<div class="form-group">
+					<label>Profesor: </label>
+					<select class="form-control select-al" name="profesor">
+						<?php foreach ($profesores->result() as $profesor): ?>
+							<option value="<?= $profesor->idprofesor?>"><?= $profesor->nombres.' '. $profesor->apellidos ?></option>
+						<?php endforeach ?>
+						
+					</select>
+				</div>
+
+				<div class="form-group">
 					<label>Creditos: </label>
 					<input type="number" class="form-control" name="creditos" value="<?= set_value('creditos') ?>">
 				</div>

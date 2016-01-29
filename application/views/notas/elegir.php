@@ -4,7 +4,7 @@
 			<h3 class="panel-title"><strong><?=$titulo?></strong></h3>
 		</div>
 		<div class="panel-body">
-			<form>
+			<form action="<?= base_url() ?>notas/GuardarEleccion" method="POST">
 				<div class="form-group">
 					<label>Nivel: </label>
 					<select class="form-control select-nivel" name="nivel">
@@ -15,18 +15,16 @@
 				</div>
 				<div class="form-group">
 					<label>Materias: </label>
-					<select class="form-control select-notas" multiple>
+					<select id="materia" class="form-control select-notas" name="materia" multiple>
 						<?php foreach ($materias->result() as $materia): ?>
-							<?php if ($materia->idnivel == $niveles->row()->idnivel): ?>
-								<option value="<?=$materia->idmateria?>"><?= $materia->descripcion ?></option>
-							<?php endif ?>
+							<option value="<?=$materia->idmateria?>"><?= $materia->descripcion ?></option>
 						<?php endforeach ?>
 					</select>
 				</div>
 					<label>Periodo: </label>
 					<select class="form-control select-periodo">
 						<?php foreach ($periodos->result() as $periodo): ?>
-							<option vlaues="<?= $periodo->idperiodo?>"><?= $periodo->descripcion ?></option>
+							<option values="<?= $periodo->idperiodo?>"><?= $periodo->descripcion ?></option>
 						<?php endforeach ?>
 					</select>
 				</div>

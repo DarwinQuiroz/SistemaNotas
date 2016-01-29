@@ -11,6 +11,11 @@
 				</div>
 
 				<div class="form-group">
+					<label>Nivel: </label>
+					<input type="text" class="form-control" name="nivel" value="<?= $niveles->result()[0]->descripcion?>">
+				</div>
+
+				<div class="form-group">
 					<label>Materia: </label>
 					<input type="text" class="form-control" name="materia" value="<?= $materia->result()[0]->descripcion?>">
 				</div>

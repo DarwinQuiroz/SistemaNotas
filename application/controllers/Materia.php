@@ -7,6 +7,7 @@ class Materia extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Materia_model');
+		$this->load->model('Profesor_model');
 		$this->load->library('form_validation');
 		// $this->load->library('pagination');
 		if(!$this->session->userdata('login'))
@@ -44,12 +45,16 @@ class Materia extends CI_Controller
 	public function crear()
 	{
 		$this->Validar();
+		$data['profesores'] = $this->Profesor_model->ObtenerProfesores();
 		$data['niveles'] = $this->Materia_model->ObtenerNiveles();
 		if ($this->form_validation->run() != FALSE)
 		{
 			$idNivel = $_POST['nivel'];
+			$idProfesor = $_POST['profesor'];
 			$datosMateria = [
+				'idalumno' => 0,
 				'idnivel' => $idNivel,
+				'idprofesor' => $idProfesor,
 				'descripcion' => $this->input->post('materia'),
 				'credito' => $this->input->post('creditos'),
 				'estado' => "Reprobada"

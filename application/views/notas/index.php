@@ -4,7 +4,7 @@
 			<h3 class="panel-title"><strong><?=$titulo?></strong></h3>
 		</div>
 		<div class="panel-body">
-			<form>
+			<form action="<?= base_url() ?>notas/consulta" method="POST">
 				<div class="form-group">
 					<label>Año Lectivo: </label>
 					<select class="form-control select-al" placeholder="Choose a country...">
@@ -22,7 +22,7 @@
 				</div>
 				<div class="form-group">
 					<label>Cédula: </label>
-					<input type="text" class="form-control" placeholder="Ingrese su número de cedula">
+					<input type="text" class="form-control" name="cedula" placeholder="Ingrese su número de cedula">
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary">Consultar</button>
