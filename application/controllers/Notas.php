@@ -37,8 +37,14 @@ class Notas extends CI_Controller
 
 	public function GuardarEleccion()
 	{
-		$id['ids'] = $_POST['materia'];
-		echo $id['ids'];
+	//	$id['ids'] = $_POST['materia'];
+	//	echo $id['ids'];
+		$materias=$_POST['materias'];
+		
+		for ($i=0; $i < count($materias); $i++) 
+		{ 
+			echo $materias[$i]."<br>";
+		}
 	}
 
 	public function Consulta()
