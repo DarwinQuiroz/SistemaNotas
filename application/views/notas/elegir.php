@@ -34,7 +34,7 @@
 					<input type="text" class="form-control">
 				</div>
 				<div class="form-group">
-					<button type="button" class="btn btn-primary">Guardar</button>
+					<button id="guardar" type="button" class="btn btn-primary">Guardar</button>
 				</div>
 			</form>
 		</div>
