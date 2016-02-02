@@ -4,7 +4,8 @@
 			<h3 class="panel-title"><strong><?=$titulo?></strong></h3>
 		</div>
 		<div class="panel-body">
-			<form action="<?= base_url() ?>notas/GuardarEleccion" method="POST">
+			<form ><!--action="<?= base_url() ?>notas/GuardarEleccion" method="POST">-->
+
 				<div class="form-group">
 					<label>Nivel: </label>
 					<select class="form-control select-nivel" name="nivel">
@@ -33,9 +34,51 @@
 					<input type="text" class="form-control">
 				</div>
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary">Guardar</button>
+					<button type="button" class="btn btn-primary">Guardar</button>
 				</div>
 			</form>
 		</div>
+		
+		
+		
+		
 	</div>
 </div>
+
+
+
+
+
+<script>
+	$(function()
+	 {
+
+	
+		
+		$('#guardar').click(
+			
+			 function (){
+			// m="";
+			// m= $('#materia option:selected').val()
+			// alert(m);
+			var materiaSeleccion= new Array();
+			var m;
+
+			$('#materia_chosen ul li span').each( function()
+			 {
+				 m=$(this).text()
+				 materiaSeleccion.push(m);
+				 //console.log(m);
+			});
+
+
+			$.post('GuardarEleccion', {materias: materiaSeleccion}, function(data, textStatus, xhr) {
+				/*optional stuff to do after success */
+				//$('#guardar').prop('type', 'submit')
+				//$(form).prop('action', 'GuardarEleccion" method="POST"');
+			});
+			
+			
+			});
+	});
+</script>
