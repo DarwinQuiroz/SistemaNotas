@@ -74,12 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	'dsn'	=> 'http://facci-uleam.cloudapp.net/',
 	'hostname' => 'localhost',
-	'username' => 'postgres',
-	'password' => '123',
+	'username' => 'useradmin',
+	'password' => 'DR3fa2a4yDbQcGFf',
 	'database' => 'SistemaNotas',
-	'dbdriver' => 'postgre',
+	'dbdriver' => 'mysql',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
